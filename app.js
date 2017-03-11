@@ -1,7 +1,4 @@
-var express = require('express'); // Recupera a bibioteca do express
-var app = express(); //executa a function retornada pelo express
-
-app.set('view engine', 'ejs'); //informa ao express quem é o engine de views
+var app = require("./config/server");
 
 app.get('/', function(req, res){
     res.render('home/index'); //Renderiza a tela.
