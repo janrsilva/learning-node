@@ -9,8 +9,7 @@ module.exports = function (app) {
             database: 'portal_noticias'
         });
         connection.query('select * from noticias', function (erro, result) {
-            res.send(result); 
+            res.render('noticias/noticia', {noticia: result}); //Renderiza a tela.
         });
-        // res.render('noticias/noticia'); //Renderiza a tela.
     });
 }
