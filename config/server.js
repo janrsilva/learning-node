@@ -7,6 +7,7 @@ app.set('views', './app/views')
 
 consing()
 .include('./app/routes') //Adiciona a pasta routes
+.then('./config/db.js') //Adiciona a modulo do banco de dados
 .into(app); // Adiciona na instancia do app
 
 module.exports = app; //exporta o app
