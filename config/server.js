@@ -1,9 +1,11 @@
 var express = require('express'); // Recupera a bibioteca do express
 var consing = require("consign");
+var bodyParser = require("body-parser");
 
 var app = express(); //executa a function retornada pelo express
 app.set('view engine', 'ejs'); //informa ao express quem é o engine de views
-app.set('views', './app/views')
+app.set('views', './app/views');
+app.use(bodyParser.urlencoded({extended: true})); //Adiciona bodyParser como middleware
 
 consing()
 .include('./app/routes') //Adiciona a pasta routes
