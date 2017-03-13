@@ -12,8 +12,8 @@ module.exports = function (app) {
         req.assert('conteudo', 'Conteudo é obrigatório').notEmpty();
         req.assert('data_noticia', 'Data é obrigatório').notEmpty().isDate({format: "YYYY-MM-DD"});
 
-        if(req.validationErrors()){
-            res.render('admin/form_add_noticia'); //Renderiza a tela.
+        if(errors = req.validationErrors()){
+            res.render('admin/form_add_noticia', {errors: errors}); //Renderiza a tela.
             return;
         }
 
