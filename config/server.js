@@ -8,6 +8,7 @@ var app = express(); //executa a function retornada pelo express
 app.set('view engine', 'ejs'); //informa ao express quem é o engine de views
 app.set('views', './application/views');
 
+app.use(express.static('./application/public/')); //Permite acesso aos arquivos estaticos
 app.use(bodyParser.urlencoded({extended: true})); //Adiciona bodyParser como middleware
 app.use(expressValidator());
 
