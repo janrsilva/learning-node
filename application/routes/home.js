@@ -1,5 +1,5 @@
 module.exports = function (app) {
     app.get('/', function(req, res){
-        res.render('home/index'); //Renderiza a tela.
+        new app.application.controllers.Home(app, req, res).index();
     });
 }
