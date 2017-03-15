@@ -43,6 +43,20 @@
 
 
 	    <div class="container">
+			<% if(errors.length) { %>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-danger">
+						<strong>Atenção!</strong>
+						<ul>
+							<% for(var i=0; i < errors.length; i++){%>
+							<li><%= errors[i].msg %></li>
+							<% }%>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<% } %>
 	    	<div class="row">
 	    		<div class="col-md-12">
 	    			<div class="noticia_wrapper">

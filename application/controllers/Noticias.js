@@ -13,10 +13,22 @@ Noticias.prototype.list = function(){
     });
 }
 
-Noticias.prototype.get = function(){
+Noticias.prototype.get = function(id){
     var res = this._res;
-    this._NoticiaDAO.find(function (erro, result) {
-        res.render('noticias/noticia', {noticia: result[0]}); //Renderiza a tela.
+    var errors = [];
+    var matches = (id+"").match(/^[0-9]$/);
+    if(!matches){
+        errors.push({msg: id+" formato inválido"});
+        errors.push({msg:"404 Not found."});
+        res.render('noticias/noticia', {errors: errors, noticia: {}}); //Renderiza a tela.
+        return;
+    }
+    this._NoticiaDAO.find(id, function (erro, result) {
+        if(!result.length){
+            result[0] = {};
+            errors.push({msg:"Not found."});
+        }
+        res.render('noticias/noticia', {errors: errors, noticia: result[0]}); //Renderiza a tela.
     });
 }
 

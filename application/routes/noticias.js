@@ -3,8 +3,8 @@ module.exports = function (app) {
         new app.application.controllers.Noticias(app, req, res).list();
     });
 
-    app.get('/noticia', function(req, res){
-        new app.application.controllers.Noticias(app, req, res).get();
+    app.get('/noticias/:id', function(req, res){
+        new app.application.controllers.Noticias(app, req, res).get(req.params.id);
     });
     
     app.get('/form_add', function(req, res){

@@ -3,8 +3,8 @@ function NoticiaDAO(connection) {
     this._table = 'noticias';
 }
 
-NoticiaDAO.prototype.find = function(callback){
-     this._connection.query('select * from ' + this._table + ' where id = 2', callback);
+NoticiaDAO.prototype.find = function(id, callback){
+     this._connection.query('select * from ' + this._table + ' where id = '+ id, callback);
 }
 
 NoticiaDAO.prototype.getAll = function(callback){
