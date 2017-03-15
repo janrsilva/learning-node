@@ -7,8 +7,18 @@ NoticiaDAO.prototype.find = function(id, callback){
      this._connection.query('select * from ' + this._table + ' where id = '+ id, callback);
 }
 
-NoticiaDAO.prototype.getAll = function(callback){
-     this._connection.query('select * from ' + this._table, callback);
+NoticiaDAO.prototype.getAll = function(callback, limit, offset){
+    if(limit){
+        limit = ' LIMIT '+ limit;
+    } else {
+        limit = '';
+    }
+    if(offset){
+        offset = ' OFFSET '+ offset;
+    } else {
+        offset = '';
+    }
+    this._connection.query('select * from ' + this._table + ' ORDER BY data_criacao DESC' + limit + offset, callback);
 }
 
 NoticiaDAO.prototype.save = function(newNoticia, callback){
